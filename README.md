@@ -103,7 +103,9 @@ pip install -r requirements.txt
 
 ---
 
-# Task 2: Sentiment and Thematic Analysis
+
+
+## Task 2: Sentiment and Thematic Analysis
 
 ## Objective
 
