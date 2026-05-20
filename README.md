@@ -100,9 +100,7 @@ If fewer than 400 reviews were returned for a bank, this was documented and the 
 
 ```bash
 pip install -r requirements.txt
-
 ```
-
 ## Task 2: Sentiment and Thematic Analysis
 
 ## Objective
@@ -285,184 +283,137 @@ SQL queries were executed to verify:
 
 Results confirmed successful insertion and strong data quality.
 
-## Task 2: Sentiment and Thematic Analysis
+# Final Insights and Recommendations
 
-## Objective
+## Overview
 
-The goal of this task is to quantify customer sentiment and identify recurring themes from Google Play Store reviews for three Ethiopian banks:
+This analysis examined Google Play Store reviews for:
 
 - Commercial Bank of Ethiopia (CBE)
 - Bank of Abyssinia (BOA)
 - Dashen Bank
 
-This helps uncover customer satisfaction drivers, major frustrations, and product improvement opportunities.
+The goal was to identify customer satisfaction drivers, recurring pain points, and actionable product recommendations.
 
 ---
 
-## Sentiment Analysis
+# 1. Comparative Analysis
 
-We used the transformer model:
+## Average Ratings
 
-`distilbert-base-uncased-finetuned-sst-2-english`
+| Bank | Average Rating |
+|------|------|
+| CBE | 4.10 |
+| Dashen | 3.92 |
+| BOA | 3.56 |
 
-This model was selected because it provides stronger contextual understanding compared to lexicon-based tools like VADER and TextBlob.
-
-Each review was classified into:
-
-- Positive
-- Negative
-- Neutral (fallback case)
-
-Each prediction includes:
-
-- sentiment label
-- confidence score
-
-Sentiment scores were also aggregated by:
-
-- Bank
-- Star rating
-
-This helps compare customer satisfaction across institutions.
+CBE showed the strongest overall customer satisfaction while BOA recorded the lowest average rating.
 
 ---
 
-## Thematic Analysis
+# 2. Satisfaction Drivers
 
-TF-IDF with unigram and bigram extraction was used to identify recurring keywords and significant phrases.
+## CBE
 
-Examples include:
+### Drivers
 
-- login error
-- slow transfer
-- OTP not received
-- app crash
-- fingerprint login
+- Reliable transaction experience in many positive reviews
+- Strong overall trust and familiarity among users
 
-These keywords were grouped manually into business-relevant themes.
+### Pain Points
 
----
-
-## Theme Grouping Logic
-
-### 1. Account Access Issues
-
-Keywords:
-
-- login
-- password
-- OTP
-- verification
-- sign in
-
-This theme captures failed authentication and account access problems.
+- Slow transfers during peak usage
+- Login and OTP issues reported repeatedly
 
 ---
 
-### 2. Transaction Performance
+## BOA
 
-Keywords:
+### Drivers
 
-- transfer
-- slow
-- transaction
-- delay
-- loading
+- Some users praised app functionality and convenience
+- Positive feedback around banking accessibility
 
-This theme reflects issues affecting payment speed and reliability.
+### Pain Points
 
----
-
-### 3. UI & Design
-
-Keywords:
-
-- UI
-- design
-- interface
-- layout
-
-This theme includes usability and visual experience feedback.
+- Frequent authentication and OTP failures
+- Higher concentration of negative sentiment
 
 ---
 
-### 4. App Stability
+## Dashen
 
-Keywords:
+### Drivers
 
-- crash
-- error
-- bug
-- freeze
+- Positive feedback about UI and usability
+- Customers appreciated modern interface design
 
-This theme captures technical failures affecting trust and retention.
+### Pain Points
 
----
-
-### 5. Feature Requests
-
-Keywords:
-
-- fingerprint login
-- budgeting tools
-- add feature
-- request
-
-This theme captures customer requests for new functionality and competitive improvements.
-
-# Task 3: PostgreSQL Database Engineering
-
-## Database Setup
-
-PostgreSQL was installed locally and a database named `bank_reviews` was created.
+- App crashes and stability complaints
+- Requests for additional features and improvements
 
 ---
 
-## Schema Design
+# 3. Dominant Themes
 
-Two relational tables were created:
+The most common themes identified across all banks were:
 
-### banks
+- Account Access Issues
+- Transaction Performance
+- App Stability
+- UI & Design
+- Feature Requests
 
-Stores metadata about each banking application.
-
-Columns:
-
-- bank_id
-- bank_name
-- app_name
-
-### reviews
-
-Stores cleaned and processed review data.
-
-Columns:
-
-- review_id
-- bank_id
-- review_text
-- rating
-- review_date
-- sentiment_label
-- sentiment_score
-- source
+Transaction delays and authentication failures appeared consistently across institutions.
 
 ---
 
-## Data Insertion
+# 4. Recommendations
 
-Python with `psycopg2` was used to insert processed review data into PostgreSQL.
+## CBE
 
-A total of 1,477 reviews were inserted successfully.
+### Recommendations
+
+1. Optimize backend transfer performance during high traffic periods
+2. Improve OTP reliability and login recovery flows
 
 ---
 
-## Verification Queries
+## BOA
 
-SQL queries were executed to verify:
+### Recommendations
 
-- review counts per bank
-- average ratings per bank
-- absence of null values in key columns
+1. Prioritize authentication stability and error handling
+2. Improve customer support response for failed login cases
 
-Results confirmed successful insertion and strong data quality.
+---
+
+## Dashen
+
+### Recommendations
+
+1. Focus on crash reduction and app stability improvements
+2. Expand modern features such as biometric login and budgeting tools
+
+---
+
+# 5. Ethical Considerations
+
+Several potential biases may affect interpretation of review data:
+
+- Negativity bias: users are more likely to leave reviews after poor experiences
+- Sampling bias: scraped reviews may overrepresent recent customer experiences
+- Language bias: multilingual reviews may reduce NLP accuracy
+
+These limitations should be considered when translating insights into product strategy.
+
+---
+
+# 6. Conclusion
+
+The analysis demonstrates that customer reviews provide valuable operational and competitive intelligence for Ethiopian fintech applications.
+
+Across all three banks, users consistently emphasized transaction reliability, authentication performance, and application stability as critical drivers of customer satisfaction and retention.
+
+The findings can help prioritize product improvements, reduce customer frustration, and improve digital banking competitiveness.
