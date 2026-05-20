@@ -282,3 +282,138 @@ SQL queries were executed to verify:
 - absence of null values in key columns
 
 Results confirmed successful insertion and strong data quality.
+
+# Final Insights and Recommendations
+
+## Overview
+
+This analysis examined Google Play Store reviews for:
+
+- Commercial Bank of Ethiopia (CBE)
+- Bank of Abyssinia (BOA)
+- Dashen Bank
+
+The goal was to identify customer satisfaction drivers, recurring pain points, and actionable product recommendations.
+
+---
+
+# 1. Comparative Analysis
+
+## Average Ratings
+
+| Bank | Average Rating |
+|------|------|
+| CBE | 4.10 |
+| Dashen | 3.92 |
+| BOA | 3.56 |
+
+CBE showed the strongest overall customer satisfaction while BOA recorded the lowest average rating.
+
+---
+
+# 2. Satisfaction Drivers
+
+## CBE
+
+### Drivers
+
+- Reliable transaction experience in many positive reviews
+- Strong overall trust and familiarity among users
+
+### Pain Points
+
+- Slow transfers during peak usage
+- Login and OTP issues reported repeatedly
+
+---
+
+## BOA
+
+### Drivers
+
+- Some users praised app functionality and convenience
+- Positive feedback around banking accessibility
+
+### Pain Points
+
+- Frequent authentication and OTP failures
+- Higher concentration of negative sentiment
+
+---
+
+## Dashen
+
+### Drivers
+
+- Positive feedback about UI and usability
+- Customers appreciated modern interface design
+
+### Pain Points
+
+- App crashes and stability complaints
+- Requests for additional features and improvements
+
+---
+
+# 3. Dominant Themes
+
+The most common themes identified across all banks were:
+
+- Account Access Issues
+- Transaction Performance
+- App Stability
+- UI & Design
+- Feature Requests
+
+Transaction delays and authentication failures appeared consistently across institutions.
+
+---
+
+# 4. Recommendations
+
+## CBE
+
+### Recommendations
+
+1. Optimize backend transfer performance during high traffic periods
+2. Improve OTP reliability and login recovery flows
+
+---
+
+## BOA
+
+### Recommendations
+
+1. Prioritize authentication stability and error handling
+2. Improve customer support response for failed login cases
+
+---
+
+## Dashen
+
+### Recommendations
+
+1. Focus on crash reduction and app stability improvements
+2. Expand modern features such as biometric login and budgeting tools
+
+---
+
+# 5. Ethical Considerations
+
+Several potential biases may affect interpretation of review data:
+
+- Negativity bias: users are more likely to leave reviews after poor experiences
+- Sampling bias: scraped reviews may overrepresent recent customer experiences
+- Language bias: multilingual reviews may reduce NLP accuracy
+
+These limitations should be considered when translating insights into product strategy.
+
+---
+
+# 6. Conclusion
+
+The analysis demonstrates that customer reviews provide valuable operational and competitive intelligence for Ethiopian fintech applications.
+
+Across all three banks, users consistently emphasized transaction reliability, authentication performance, and application stability as critical drivers of customer satisfaction and retention.
+
+The findings can help prioritize product improvements, reduce customer frustration, and improve digital banking competitiveness.
