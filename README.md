@@ -100,7 +100,7 @@ If fewer than 400 reviews were returned for a bank, this was documented and the 
 
 ```bash
 pip install -r requirements.txt
-
+```
 ## Task 2: Sentiment and Thematic Analysis
 
 ## Objective
