@@ -101,8 +101,6 @@ If fewer than 400 reviews were returned for a bank, this was documented and the 
 ```bash
 pip install -r requirements.txt
 
----
-
 ```
 
 ## Task 2: Sentiment and Thematic Analysis
@@ -229,3 +227,60 @@ Keywords:
 - request
 
 This theme captures customer requests for new functionality and competitive improvements.
+
+# Task 3: PostgreSQL Database Engineering
+
+## Database Setup
+
+PostgreSQL was installed locally and a database named `bank_reviews` was created.
+
+---
+
+## Schema Design
+
+Two relational tables were created:
+
+### banks
+
+Stores metadata about each banking application.
+
+Columns:
+
+- bank_id
+- bank_name
+- app_name
+
+### reviews
+
+Stores cleaned and processed review data.
+
+Columns:
+
+- review_id
+- bank_id
+- review_text
+- rating
+- review_date
+- sentiment_label
+- sentiment_score
+- source
+
+---
+
+## Data Insertion
+
+Python with `psycopg2` was used to insert processed review data into PostgreSQL.
+
+A total of 1,477 reviews were inserted successfully.
+
+---
+
+## Verification Queries
+
+SQL queries were executed to verify:
+
+- review counts per bank
+- average ratings per bank
+- absence of null values in key columns
+
+Results confirmed successful insertion and strong data quality.
