@@ -284,3 +284,185 @@ SQL queries were executed to verify:
 - absence of null values in key columns
 
 Results confirmed successful insertion and strong data quality.
+
+## Task 2: Sentiment and Thematic Analysis
+
+## Objective
+
+The goal of this task is to quantify customer sentiment and identify recurring themes from Google Play Store reviews for three Ethiopian banks:
+
+- Commercial Bank of Ethiopia (CBE)
+- Bank of Abyssinia (BOA)
+- Dashen Bank
+
+This helps uncover customer satisfaction drivers, major frustrations, and product improvement opportunities.
+
+---
+
+## Sentiment Analysis
+
+We used the transformer model:
+
+`distilbert-base-uncased-finetuned-sst-2-english`
+
+This model was selected because it provides stronger contextual understanding compared to lexicon-based tools like VADER and TextBlob.
+
+Each review was classified into:
+
+- Positive
+- Negative
+- Neutral (fallback case)
+
+Each prediction includes:
+
+- sentiment label
+- confidence score
+
+Sentiment scores were also aggregated by:
+
+- Bank
+- Star rating
+
+This helps compare customer satisfaction across institutions.
+
+---
+
+## Thematic Analysis
+
+TF-IDF with unigram and bigram extraction was used to identify recurring keywords and significant phrases.
+
+Examples include:
+
+- login error
+- slow transfer
+- OTP not received
+- app crash
+- fingerprint login
+
+These keywords were grouped manually into business-relevant themes.
+
+---
+
+## Theme Grouping Logic
+
+### 1. Account Access Issues
+
+Keywords:
+
+- login
+- password
+- OTP
+- verification
+- sign in
+
+This theme captures failed authentication and account access problems.
+
+---
+
+### 2. Transaction Performance
+
+Keywords:
+
+- transfer
+- slow
+- transaction
+- delay
+- loading
+
+This theme reflects issues affecting payment speed and reliability.
+
+---
+
+### 3. UI & Design
+
+Keywords:
+
+- UI
+- design
+- interface
+- layout
+
+This theme includes usability and visual experience feedback.
+
+---
+
+### 4. App Stability
+
+Keywords:
+
+- crash
+- error
+- bug
+- freeze
+
+This theme captures technical failures affecting trust and retention.
+
+---
+
+### 5. Feature Requests
+
+Keywords:
+
+- fingerprint login
+- budgeting tools
+- add feature
+- request
+
+This theme captures customer requests for new functionality and competitive improvements.
+
+# Task 3: PostgreSQL Database Engineering
+
+## Database Setup
+
+PostgreSQL was installed locally and a database named `bank_reviews` was created.
+
+---
+
+## Schema Design
+
+Two relational tables were created:
+
+### banks
+
+Stores metadata about each banking application.
+
+Columns:
+
+- bank_id
+- bank_name
+- app_name
+
+### reviews
+
+Stores cleaned and processed review data.
+
+Columns:
+
+- review_id
+- bank_id
+- review_text
+- rating
+- review_date
+- sentiment_label
+- sentiment_score
+- source
+
+---
+
+## Data Insertion
+
+Python with `psycopg2` was used to insert processed review data into PostgreSQL.
+
+A total of 1,477 reviews were inserted successfully.
+
+---
+
+## Verification Queries
+
+SQL queries were executed to verify:
+
+- review counts per bank
+- average ratings per bank
+- absence of null values in key columns
+
+Results confirmed successful insertion and strong data quality.
